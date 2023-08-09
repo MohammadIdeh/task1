@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            width: 250px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 65%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+            border-radius: 20px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        input[type="submit"] {
+            background-color: #ff0066;
+            color: #fff;
+            padding: 12px 72px;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+        }
+
+        h6 {
+            font-size:14px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="loginForm" action="index.html" method="get">
+        <div>
+            <img src="login.png" alt="Logo" style="display: block; margin: 0 auto; max-width: 160px; margin-bottom: 10px;">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <br>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <br>
+            <a href="#"><h6>Forgot password?</h6></a>
+            <input type="submit" value="Login">
+            <h6>Don't have an account? <a href="#"><strong>Create</strong></a></h6>
+        </div>
+    </form>
+
+    <script>
+        // Get references to the form and login button
+        const form = document.getElementById("loginForm");
+        const loginButton = document.getElementById("loginButton");
+
+        // Add an event listener for the form submit event
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the form from submitting and reloading the page
+
+            // Get the values entered by the user
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Validate email format using a regular expression
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailRegex.test(email)) {
+                console.log("Invalid email format");
+                return; // Stop further processing if email is invalid
+            }
+
+            // Print the values to the console
+            console.log("Email:", email);
+            console.log("Password:", password);
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
